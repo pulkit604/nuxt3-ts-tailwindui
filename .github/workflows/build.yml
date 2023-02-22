@@ -37,11 +37,11 @@ jobs:
       - name: Generate
         run: npm run generate
       - name: Zip artifact for upload
-        run: cd dist && zip ../dist . -r
+        run: cd dist && zip ../${{ steps.get_branch.outputs.sha }}-${{ github.run_id }} . -r
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: dist
+          name: ${{ steps.get_branch.outputs.sha }}-${{ github.run_id }}
           path: .
           retention-days: 7
       - name: Wait for Artifact download
@@ -72,11 +72,11 @@ jobs:
       - name: Generate
         run: npm run generate
       - name: Zip artifact for upload
-        run: cd dist && zip ../dist . -r
+        run: cd dist && zip ../${{ steps.get_branch.outputs.sha }}-${{ github.run_id }} . -r
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: dist
+          name: ${{ steps.get_branch.outputs.sha }}-${{ github.run_id }}
           path: .
           retention-days: 7
       - name: Webhook
