@@ -71,10 +71,10 @@ jobs:
         run: npm run build
       - name: Generate
         run: npm run generate
-      #- name: Zip artifact for upload
-      #  run: cd dist && zip ../dist.zip . -r
+      - name: Zip artifact for upload
+        run: cd dist && zip ../dist.zip . -r
       - name: Archive Production Artifact
-        uses: npm run generate && actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         with:
           name: ${{ github.sha }}-${{ github.run_id }}
           path: dist
