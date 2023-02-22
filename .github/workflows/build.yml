@@ -41,7 +41,7 @@ jobs:
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.get_branch.outputs.sha }}-${{ github.run_id }}
+          name: dist.zip
           path: /home/runner/work/nuxt3-ts-tailwindui/dist
           retention-days: 7
       - name: Wait for Artifact download
@@ -76,7 +76,7 @@ jobs:
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ github.sha }}-${{ github.run_id }}
+          name: dist.zip
           path: /home/runner/work/nuxt3-ts-tailwindui/dist
           retention-days: 7
       - name: Webhook
