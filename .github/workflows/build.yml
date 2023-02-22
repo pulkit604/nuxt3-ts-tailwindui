@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: dist.zip
-          path: dist
+          path: .
           retention-days: 7
       - name: Wait for Artifact download
         run: sleep 15
@@ -77,7 +77,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: dist.zip
-          path: dist
+          path: .
           retention-days: 7
       - name: Webhook
         uses: diverta/workflow-webhook@v2
