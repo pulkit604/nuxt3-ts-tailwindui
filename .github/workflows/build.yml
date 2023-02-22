@@ -6,9 +6,6 @@ on:
   issue_comment:
     types: [created, edited]
   workflow_dispatch:
-
-env:
-  ACTIONS_STEP_DEBUG: true
 jobs:
   # for Pull Request (exclude merged)
   pullreq_build:
@@ -36,8 +33,8 @@ jobs:
         run: npm run build
       - name: Generate
         run: npm run generate
-      - name: Zip artifact for upload
-        run: cd dist && zip ../${{ steps.get_branch.outputs.sha }}-${{ github.run_id }} . -r
+        # - name: Zip artifact for upload
+        #  run: cd dist && zip ../dist.zip . -r
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
@@ -52,7 +49,7 @@ jobs:
           webhook_url: "https://theyyam-dev.g.kuroco.app/direct/menu/github/"
           webhook_secret: "5e052083e70d563f6d782e852ebb5e1a"
           data: '{"single_zip":"0","domain":"theyyam-dev.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
-
+          
   #for Push
   pushed_build:
     name: Build(pushed)
@@ -71,12 +68,12 @@ jobs:
         run: npm run build
       - name: Generate
         run: npm run generate
-      - name: Zip artifact for upload
-        run: cd dist && zip ../${{ steps.get_branch.outputs.sha }}-${{ github.run_id }} . -r
+        # - name: Zip artifact for upload
+        #  run: cd dist && zip ../dist.zip . -r
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ steps.get_branch.outputs.sha }}-${{ github.run_id }}
+          name: ${{ github.sha }}-${{ github.run_id }}
           path: .
           retention-days: 7
       - name: Webhook
