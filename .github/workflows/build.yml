@@ -25,7 +25,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ github.sha }}-${{ github.run_id }}
-          path: /home/runner/work/nuxt3-ts-tailwindui/dist/*
+          path: /home/runner/work/nuxt3-ts-tailwindui/nuxt3-ts-tailwindui/dist/*
           retention-days: 7
       - name: Webhook
         uses: distributhor/workflow-webhook@v1
