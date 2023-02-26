@@ -21,6 +21,8 @@ jobs:
         run: npm run build
       - name: Generate
         run: npm run generate
+      - name: Check ls
+        run: ls
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v3
         with:
