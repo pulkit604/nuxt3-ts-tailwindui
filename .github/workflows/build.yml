@@ -4,7 +4,8 @@ on:
     branches:
       - main
   workflow_dispatch:
-permissions: read-all|write-all
+permissions: 
+  actions: read-all|write-all
 jobs:
   build:
     name: Build
@@ -26,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v2-preview
         with:
           name: ${{ github.sha }}-${{ github.run_id }}
-          path: ${{ pwd }}/dist
+          path: dist
           retention-days: 7
       - name: Webhook
         uses: distributhor/workflow-webhook@v1
