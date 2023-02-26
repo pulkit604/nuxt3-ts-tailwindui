@@ -21,8 +21,6 @@ jobs:
         run: npm run build
       - name: Generate
         run: npm run generate
-      - name: Change permission
-        run: chmod 777 dist
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
