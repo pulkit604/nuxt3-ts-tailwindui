@@ -4,6 +4,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+permissions: read-all|write-all
 jobs:
   build:
     name: Build
@@ -21,8 +22,6 @@ jobs:
         run: npm run build
       - name: Generate
         run: npm run generate
-      - name: Check pwd
-        run: pwd
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2-preview
         with:
