@@ -22,7 +22,7 @@ jobs:
       - name: Generate
         run: npm run generate
       - name: Tar dist
-        run: tar cf dist.tar dist/
+        run: tar cf dist.tar ./dist
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v3
         with:
