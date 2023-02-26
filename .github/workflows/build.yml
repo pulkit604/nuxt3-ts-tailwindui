@@ -21,16 +21,6 @@ jobs:
         run: npm run build
       - name: Generate
         run: npm run generate
-      - name: DEBUG1
-        run: fs.lstatSync('dist').isDirectory()
-      - name: DEBUG2
-        run: fs.lstatSync('/home/runner/work/nuxt3-ts-tailwindui/nuxt3-ts-tailwindui/dist').isDirectory()
-      - name: DEBUG3
-        run: fs.lstatSync('/home/runner/work/nuxt3-ts-tailwindui/nuxt3-ts-tailwindui/dist/').isDirectory()
-      - name: DEBUG4
-        run: fs.lstatSync('/home/runner/work/nuxt3-ts-tailwindui/nuxt3-ts-tailwindui/').isDirectory()
-      - name: DEBUG5
-        run: fs.lstatSync('/dist').isDirectory()
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v2
         with:
