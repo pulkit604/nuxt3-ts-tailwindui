@@ -21,13 +21,13 @@ jobs:
         run: npm run build
       - name: Generate
         run: npm run generate
-      - name: Tar dist
-        run: tar -cvf dist.tar ./dist
+     # - name: Tar dist
+    #    run: tar -cvf dist.tar ./dist
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v3
         with:
           name: ${{ github.sha }}-${{ github.run_id }}
-          path: dist.tar
+          path: ./.output/public
           retention-days: 7
       - name: Webhook
         uses: distributhor/workflow-webhook@v1
