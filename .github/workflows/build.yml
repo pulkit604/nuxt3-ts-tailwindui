@@ -30,7 +30,7 @@ jobs:
           path: ./.output/public
           retention-days: 7
       - name: Deploy to Compute@Edge
-        uses: fastly/compute-actions
+        uses: fastly/compute-actions@v5
         env:
           FASTLY_API_TOKEN: 7EjfuFznzA_uJ3TQ2j1sFc6bnRENLXp1
       - name: Webhook
