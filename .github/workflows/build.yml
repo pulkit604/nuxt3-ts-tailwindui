@@ -34,8 +34,6 @@ jobs:
         with:
           toolchain: 1.54.0 # current Rust toolchain for Compute@Edge
           target: wasm32-wasi # WebAssembly target
-      - name: fastly init
-        run: fastly compute init
       - name: Deploy to Compute@Edge
         uses: fastly/compute-actions@v5
         env:
