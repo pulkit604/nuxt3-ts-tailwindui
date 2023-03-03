@@ -32,7 +32,7 @@ jobs:
       - name: Deploy to Compute@Edge
         uses: fastly/compute-actions@v5
         env:
-          FASTLY_API_TOKEN: 7EjfuFznzA_uJ3TQ2j1sFc6bnRENLXp1
+          FASTLY_API_TOKEN: ${{ secrets.FASTLY_TOKEN }}
       - name: Webhook
         uses: distributhor/workflow-webhook@v1
         env:
