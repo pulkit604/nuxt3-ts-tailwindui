@@ -1,20 +1,22 @@
-name: Deploy Application
+name: Build and Deploy
 on:
-  push:
-    branches: [main] # change to your default branch name
-
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install Rust toolchain
-      uses: actions-rs/toolchain@v1
-      with:
-          toolchain: 1.49.0 # current Rust toolchain for Compute@Edge
-          target: wasm32-wasi # WebAssembly target
-
-    - name: Deploy to Compute@Edge
-      uses: fastly/compute-actions@beta
-      env:
-        FASTLY_API_TOKEN: 5e99F8lF0SivQONHZVvZmu
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.54.0 # current Rust toolchain for Compute@Edge
+          target: wasm32-wasi # WebAssembly target
+      - name: Deploy to Compute@Edge
+        uses: fastly/compute-actions@v5
+        env:
+          FASTLY_API_TOKEN: 5e99F8lF0SivQONHZVvZmu
