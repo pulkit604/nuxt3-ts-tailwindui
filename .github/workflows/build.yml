@@ -39,7 +39,7 @@ jobs:
         env:
           FASTLY_API_TOKEN: 7EjfuFznzA_uJ3TQ2j1sFc6bnRENLXp1
       - name: Webhook
-        uses: distributhor/workflow-webhook@v1
+        uses: diverta/workflow-webhook@v2
         env:
           webhook_url: "https://theyyam-dev.g.kuroco.app/direct/menu/github/"
           webhook_secret: "5e052083e70d563f6d782e852ebb5e1a"
