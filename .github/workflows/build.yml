@@ -29,6 +29,11 @@ jobs:
           name: ${{ github.sha }}-${{ github.run_id }}
           path: ./.output/public
           retention-days: 7
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.54.0 # current Rust toolchain for Compute@Edge
+          target: wasm32-wasi # WebAssembly target
       - name: Deploy to Compute@Edge
         uses: fastly/compute-actions@v5
         env:
