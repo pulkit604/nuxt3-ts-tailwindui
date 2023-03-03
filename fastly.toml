@@ -2,5 +2,5 @@ manifest_version = 1
 name = "nuxt3-ts-tailwindui"
 description = "A test"
 authors = ["pulkit@kemuri.in"]
-language = "javascript"
+language = "node/npm"
 service_id = "g82Fmws3nDK5j244eZ6Uw4"
