@@ -17,6 +17,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.7",
     "@heroicons/vue": "^2.0.14",
-    "postcss-custom-properties": "^13.1.4"
+    "postcss-custom-properties": "^13.1.4",
+    "@fastly/js-compute": "^1.0.1"
   }
 }
