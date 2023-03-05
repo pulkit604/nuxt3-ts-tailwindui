@@ -1,0 +1,41 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Generate
+        run: npm run generate
+      - name: Tar dist
+        run: mkdir pkg && tar -cvf pkg/nuxt3-ts-tailwindui.tar.gz ./.output/public
+      #- name: Archive Production Artifact
+      #  uses: actions/upload-artifact@v3
+      #  with:
+      #    name: ${{ github.sha }}-${{ github.run_id }}
+      #    path: ./.output/public
+      #    retention-days: 7
+      - name: Deploy to Compute@Edge
+        uses: fastly/compute-actions@v5
+        env:
+          FASTLY_API_TOKEN: ${{ secrets.FASTLY_TOKEN }}
+      #- name: Webhook
+      #  uses: distributhor/workflow-webhook@v1
+      ##  env:
+       #   webhook_url: "https://theyyam-dev.g.kuroco.app/direct/menu/github/"
+       #   webhook_secret: "5e052083e70d563f6d782e852ebb5e1a"
+       #   data: '{"domain":"theyyam-dev.g.kuroco-front.app", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
