@@ -2,7 +2,7 @@ manifest_version = 1
 name = "nuxt3-ts-tailwindui"
 description = "A test"
 authors = ["pulkit@kemuri.in"]
-language = "Javascript"
+language = "javascript"
 service_id = "g82Fmws3nDK5j244eZ6Uw4"
 [scripts]
-#build = "$(npm bin)/webpack && $(npm bin)/js-compute-runtime ./bin/index.js ./bin/main.wasm"
+build = "$(npm bin)/webpack && $(npm bin)/js-compute-runtime ./bin/index.js ./bin/main.wasm"
