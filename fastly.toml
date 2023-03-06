@@ -4,3 +4,5 @@ description = "A test"
 authors = ["pulkit@kemuri.in"]
 language = "javascript"
 service_id = "g82Fmws3nDK5j244eZ6Uw4"
+[scripts]
+build = "$(npm bin)/webpack && $(npm bin)/js-compute-runtime ./.output/ ./bin/main.wasm"
